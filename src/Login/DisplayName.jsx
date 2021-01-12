@@ -6,8 +6,8 @@ export default class DisplayName extends Component {
     super(props);
   }
   state = {
-    firstName: true,
-    lastName: true,
+    firstName: "John",
+    lastName: "Doe",
   };
 
   //function that manipulate state
