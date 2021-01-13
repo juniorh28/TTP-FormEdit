@@ -6,7 +6,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <DisplayName />
+        <div className="App-header">
+          <DisplayName firstName={"John"} lastName={"Doe"} />
+        </div>
       </div>
     );
   }
