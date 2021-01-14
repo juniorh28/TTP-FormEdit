@@ -10,8 +10,8 @@ export default class DisplayName extends Component {
       firstName: props.firstName, //John
       lastName: props.lastName, //Doe
       //oldFirstName and oldLastName will be blank and will the firstName and lastName on saving.
-      oldFirstName: "",
-      oldLastName: "",
+      oldFirstName: props.firstName,
+      oldLastName: props.lastName,
       isEdit: false,
     };
 
@@ -58,21 +58,36 @@ export default class DisplayName extends Component {
   //will display the old first and last name.
   cancel = () => {
     this.setState({
-      firstName: this.state.oldFirstname,
-      lastName: this.state.oldLastname,
+      firstName: this.state.oldFirstName,
+      lastName: this.state.oldLastName,
       isEdit: false,
     });
   };
 
+  /*
   Display = () => {
+    if(this.state.isEdit){
+      return(
+        <div>Hello</div>
+      )
+    }
+    else{
+      return(
+        <div>Good-bye</div>
+      )
+    }
+  }
+*/
+  //call the Display method which will let the render know what to display.
+  render() {
     //if we press edit...
     if (this.state.isEdit) {
       return (
         <div>
           {/*
-          show the form that allows you to change first and last name.
-          Along with a save and cancel button
-      */}
+              show the form that allows you to change first and last name.
+              Along with a save and cancel button
+          */}
           <form>
             <label for="Name">First Name:</label>
             <input
@@ -99,7 +114,7 @@ export default class DisplayName extends Component {
             <div>First Name: {this.state.firstName}</div>
             <div>Last Name: {this.state.lastName}</div>
             <button onClick={this.save}>Save</button>
-            <button>Cancel</button>
+            <button onClick={this.cancel}>Cancel</button>
           </form>
         </div>
       );
@@ -114,11 +129,6 @@ export default class DisplayName extends Component {
         </div>
       );
     }
-  };
-
-  //call the Display method which will let the render know what to display.
-  render() {
-    return <div>{this.Display()}</div>;
   }
 }
 
